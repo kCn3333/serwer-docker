@@ -1,0 +1,19 @@
+version: '3'
+#---------------------------------------------------------------------#
+#     Homarr - A simple, yet powerful dashboard for your server.     #
+#---------------------------------------------------------------------#
+services:
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock   # Optional, only if you want docker integration
+      - ./homarr2/configs:/app/data/configs
+      - ./homarr2/icons:/app/public/icons
+      - ./homarr2/data:/data
+    ports:
+      - '7585:7575'
+    #dns:
+     # - '192.168.0.XX'    # Add your primary DNS server IP here
+     # - '8.8.8.8'         # Add your additional DNS server IP here
